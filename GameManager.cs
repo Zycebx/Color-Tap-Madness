@@ -9,16 +9,18 @@ public class GameManager : MonoBehaviour
     public int score = 0;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI livesText;
-
+     public GameObject gameOverPanel;
 
     void Awake()
     {
-        Instance = this;
+        if(Instance==null) Instance = this; 
+        else Destroy(gameObject);
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         UpdateUI();
+        gameOverPanel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -49,6 +51,6 @@ public class GameManager : MonoBehaviour
 
     void TriggerGameOver()
     {
-
+        gameOverPanel.SetActive(false);
     }
 }
